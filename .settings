@@ -1,0 +1,88 @@
+# 11 October 2013
+
+###############################
+# FAHD SHARIFF'S BASH PROFILE #
+###############################
+
+#HISTCONTROL=ignoredups
+#EDITOR=emacs
+
+# disables notifications of bg-job termination
+set -o notify
+
+#set -o braceexpand
+#set -o emacs
+
+##########
+# PROMPT #
+##########
+
+#PS1=\[\e[0m\]\e]2;\u@\h:`tty`>\w[\d,\t]\a\n\[\e[4;34;1m\]\u@\h:\[\e[0;31;1m\]\w>\[\e[m\]
+
+###############
+# COMPLETIONS #
+###############
+
+shopt -s extglob progcomp cdspell
+
+# Make directory commands see only directories
+complete -d cd mkdir rmdir pushd jd
+
+# Make file commands see only files
+complete -f cat less more chown ln strip nedit emacs
+
+#complete -f -X '*.Z' compress
+##complete -f -X '!*.@(Z|gz|tgz|Gz|dz)' gunzip zcmp zdiff zcat zegrep zfgrep zgrep zless zmore
+#complete -f -X '!*.Z' uncompress
+#complete -f -X '!*.@(gif|jp?(e)g|tif?(f)|pn[gm]|p[bgp]m|bmp|xpm|ico|xwd|tga|pcx|GIF|JP?(E)G|TIF?(F)|PN[GM]|P[BGP]M|BMP|XPM|ICO|XWD|TGA|PCX)' ee display
+#complete -f -X '!*.@(gif|jp?(e)g|tif?(f)|png|p[bgp]m|bmp|x[bp]m|rle|rgb|pcx|fits|pm|GIF|JPG|JP?(E)G|TIF?(F)|PNG|P[BGP]M|BMP|X[BP]M|RLE|RGB|PCX|FITS|PM)' xv qiv
+#complete -f -X '!*.@(ps|PS)' gv ggv
+#complete -f -X '!*.@(ps|PS|pdf|PDF)' fmerge
+#complete -f -X '!*.@(dvi|DVI)?(.@(gz|Z|bz2))' xdvi
+#complete -f -X '!*.@(dvi|DVI)' dvips dviselect dvitype
+#complete -f -X '!*.@(pdf|PDF)' acroread gpdf xpdf
+#complete -f -X '!*.texi*' makeinfo texi2html
+#complete -f -X '!*.@(?(la)tex|?(LA)TEX|texi|TEXI|dtx|DTX|ins|INS)' tex latex slitex jadetex pdfjadetex pdftex pdflatex texi2dvi
+#complete -f -X '!*.fig' xfig
+#complete -f -X '!*.@(?([xX]|[sS])[hH][tT][mM]?([lL]))' netscape mozilla lynx appletviewer hotjava
+#complete -f -X '!*.idl' idl idlj
+
+# these look interesting
+#complete -f -X '!*.@(zip|ZIP|jar|JAR|exe|EXE|pk3|war|wsz|ear|zargo|xpi)' unzip zipinfo
+#complete -f -X '!*.tar' tar
+#complete -f -X '!*.java' javac
+
+# user commands see only users
+#complete -u su usermod userdel passwd write groups w talk
+
+# bg completes with stopped jobs
+#complete -A stopped -P '%' bg
+
+# other job commands
+#complete -j -P '%' fg jobs disown
+
+# readonly and unset complete with shell variables
+#complete -v readonly unset
+
+# set completes with set options
+#complete -A setopt set
+
+# shopt completes with shopt options
+#complete -A shopt shopt
+
+# unalias completes with aliases
+#complete -a unalias
+
+# type and which complete on commands
+#complete -c command type which
+
+# complete hostnames
+#complete -A hostname ssh telnet rlogin ftp ping traceroute
+
+#######
+# END #
+#######
+
+# disables write access to your terminal
+#mesg -n
+#echo -e \e[0;31;1m$USER logged in to `tty` on `date`\e[m

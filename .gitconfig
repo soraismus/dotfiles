@@ -1,0 +1,17 @@
+[core]
+	editor = vim
+	excludesfile = /home/theo/.gitignore_global
+[user]
+	name = Soraismus
+	email = tertius_lupus@yahoo.com
+[alias]
+	br = branch
+	ci = commit
+	co = checkout
+	d = diff
+	dump = cat-file -p
+	gr = '[ ! -z `git rev-parse --show-cdup` ] && `git rev-parse --show-cdup || pwd`' # goto git-repo root
+	h = help
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	st = status
+	type = cat-file -t

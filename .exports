@@ -1,0 +1,50 @@
+# 11 June 2013
+export directory_history_index=0
+export directory_history_length=0
+
+# 13 June 2013
+export JAVA_HOME="/usr/local/src/jdk1.7.0_21"
+export JAVA_BIN="$JAVA_HOME/bin"
+
+# 3 September 2013
+export PATH=$PATH:"/usr/local/scripts"
+
+# 19 September 2013
+export NODE_PATH=$NODE_PATH:"/home/theo/node_modules"
+
+# 14 November 2013
+export EDITOR="/usr/bin/vim"
+
+# 27 November 2013
+export TAGDIR="$HOME/.tags"
+
+# 28 November 2013
+export MARKPATH="$HOME/.marks"
+
+# 29 November 2013
+export FILE_ANNOTATIONS="$HOME/.file-annotations"
+export NAMESPACES="/usr/local/namespaces"
+
+# Wed Jan  8 18:00:07 EST 2014
+if [ -f ~/.nvm/nvm.sh ]; then
+  export PATH=$PATH:./node_modules/.bin
+fi
+
+# Wed Jan 15 01:09:56 EST 2014
+export LASTDIR="/"
+
+# Before each time the prompt is displayed, the fn stored in
+# the env var PROMPT_COMMAND is called.
+export PROMPT_COMMAND="prompt_command"
+
+# Wed Feb  5 17:30:45 EST 2014
+export BOOKMARKPATH="$HOME/Documents/bookmarks"
+
+# Fri Feb  7 11:59:45 EST 2014
+export TAGPATH="$HOME/.tags"
+
+# Thu Sep 18 05:29:06 EDT 2014
+export PRIV_BM_PATH="$HOME/Documents/private-bookmarks"
+
+# Sun Oct  5 11:54:09 EDT 2014
+export CLOJURESCRIPT_HOME="$HOME/git-pulls/github/clojurescript"

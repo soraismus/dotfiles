@@ -1,0 +1,10 @@
+"hg6976
+
+loadplugins '\.(js|penta)$'
+group user
+command! -nargs=* wikiSearch -javascript userContext.searchWikis(args)
+set defsearch=duckduckgo
+set editor='gnome-terminal -e "vim +<line> +\"sil! call cursor(0, <column>)\" <file>"'
+set hintkeys=asdfg;lkjh
+
+" vim: set ft=pentadactyl:

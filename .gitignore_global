@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log
+project-notes
+
+*.csv
+*.gz
+*.log
+*.notes
+*.out
+*.pid
+*.secret
+*.seed
+*.swo
+*.swp
+*.zip

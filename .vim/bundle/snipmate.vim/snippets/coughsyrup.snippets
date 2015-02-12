@@ -1,0 +1,68 @@
+# if
+snippet if
+	if (${1:true}) { ${2}
+# if ... else
+snippet ife
+	if (${1:true}) {${2}
+	} else {${3}
+# tertiary conditional
+snippet 3
+	if ${1:/* condition */} then ${2:a} else ${3:b}
+# switch
+# case
+# for (...) {...}
+# for (...) {...} (Improved Native For-Loop)
+# while (...) {...}
+# do...while
+# Object Method (snippet :f)
+# setTimeout function
+snippet timeout
+	setTimeout((() -> ${3}), ${1:0})
+# Get Elements
+snippet get
+	getElementsBy${1:TagName}('${2}')${3}
+# Get Element
+snippet gett
+	getElementBy${1:Id}('${2}')${3}
+# console.log
+snippet lg
+	console.log ${1}
+# this
+snippet t
+	this.
+# Array.prototype.slice.call(arguments, ${1})
+snippet argslice
+	Array::slice.call(arguments, ${1})${2}
+# Parentheses
+snippet (
+	( ${1} ) ${2}
+# Brackets
+snippet [
+	[ ${1} ] ${2}
+# Braces
+snippet {
+	{ ${1} } ${2}
+# var variable = function () {}
+snippet fn
+	${1} = (${2}) -> ${3}
+# Object property
+snippet :p
+	${1}: ${2},
+	${3}
+# Fat Arrow
+# snippet =>
+#	(${1}) => ${2}
+#	${3}
+
+# this.${var} = function () {} (snippet tf)
+# describe (${description}, function () {
+snippet de
+	describe ("${1:description}", function () {
+	  ${2}
+# it (${expectation}, function () {
+snippet it
+	it ("${1:expectation}", function () {
+	  ${2}
+# expect (${1})${2}
+snippet ex
+	expect (${1:expected}) .${2:predicate} (${3:actual});${4}
