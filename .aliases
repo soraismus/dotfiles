@@ -8,10 +8,12 @@ alias cough='~/projects/cough-syrup/bin/cough'
 alias cpuinfo='lscpu' # Get cpu info.
 alias crowserify="browserify -t coughify --extension='.cough'"
 alias ducks='du -cks * | sort -rn | head'
+alias echoErr='>&2 echo'
 alias echox='echo $(xclip -o)'
 alias ff='find . -name $1'
 alias gitst='git st'
 alias gitd='git d'
+alias gr='cd "$( git rev-parse --show-cdup || pwd )"' # Go to git-repo root.
 alias h='history'
 alias igrep='grep -i'
 alias ls='ls -A --group-directories-first --color=auto'
