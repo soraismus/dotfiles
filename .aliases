@@ -1,28 +1,27 @@
 alias ..='cd ..'
 alias ...='cd ../..'
-alias b='back'
-alias bm='bookmark'
+alias b='back' # See 'back' in the 'functions' config file.
+alias bm='bookmark' # See 'bookmark' in the 'scripts' directory.
 alias calc='bc -l' # Start calculator with math support.
 alias cd..='cd ..'
 alias cough='~/projects/cough-syrup/bin/cough'
 alias cpuinfo='lscpu' # Get cpu info.
-alias crowserify="browserify -t coughify --extension='.cough'"
-alias ducks='du -cks * | sort -rn | head'
+alias ducks='du -cks * | sort -rn | head' # Files with most disk usage.
 alias echoErr='>&2 echo'
 alias echox='echo $(xclip -o)'
 alias ff='find . -name $1'
-alias gitst='git st'
-alias gitd='git d'
+alias gitst='git status' # See also `st`.
+alias gitd='git diff'
 alias gr='cd "$( git rev-parse --show-cdup || pwd )"' # Go to git-repo root.
 alias h='history'
 alias igrep='grep -i'
 alias ls='ls -A --group-directories-first --color=auto'
-alias memory='less /proc/meminfo'
-alias meminfo='free -m' # Show memory resources.
+alias memory='less /proc/meminfo' # Show memory resources; see also `meminfo`.
+alias meminfo='free -m' # Show memory resources; see also `memory`.
 alias mkdir='mkdir -pv'
 alias path='echo -e ${PATH//:/\\n}' # List all of the paths in $PATH.
 alias ports='netstat -tulanp' # Show open ports.
-alias st="git status"
+alias st="git status" # See also `gitst`.
 alias quit='exit'
 alias v='vim'
 alias wortolisto='vim ~/docs/wortolistoj/wortolisto'
