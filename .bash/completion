@@ -3,9 +3,9 @@
 _completeMarks () {
   local currentword=${COMP_WORDS[COMP_CWORD]}
   # Set 'wordlist' to the set of symbolic links in '$MARKPATH'.
-	local wordlist=$( find $MARKPATH -type l -printf "%f " )
-	COMPREPLY=( $( compgen -W "$wordlist" -- "$currentword" ) )
-	return 0
+  local wordlist=$( find $MARKPATH -type l -printf "%f " )
+  COMPREPLY=( $( compgen -W "$wordlist" -- "$currentword" ) )
+  return 0
 }
 
 _completeNamespaceScript () {
@@ -14,26 +14,26 @@ _completeNamespaceScript () {
 
   # `$command help` returns a newline-delimited string, so
   # transform the newlines into spaces.
-	local wordlist=$( "$command" help | tr '\\n' ' ' )
+  local wordlist=$( "$command" help | tr '\\n' ' ' )
 
-	COMPREPLY=( $( compgen -W "$wordlist" -- "$currentword" ) )
-	return 0
+  COMPREPLY=( $( compgen -W "$wordlist" -- "$currentword" ) )
+  return 0
 }
 
 _completeTags () {
-	local currentword=${COMP_WORDS[COMP_CWORD]}
-	# Set 'wordlist' to the set of directories in '$TAGPATH'.
-	local wordlist=$( find $TAGPATH -type d -printf "%f " )
-	COMPREPLY=( $( compgen -W "$wordlist" -- "$currentword" ) )
-	return 0
+  local currentword=${COMP_WORDS[COMP_CWORD]}
+  # Set 'wordlist' to the set of directories in '$TAGPATH'.
+  local wordlist=$( find $TAGPATH -type d -printf "%f " )
+  COMPREPLY=( $( compgen -W "$wordlist" -- "$currentword" ) )
+  return 0
 }
 
 _vcshcomplete () {
   local currentword=${COMP_WORDS[COMP_CWORD]}
-	local wordlist=$( for i in $( find $HOME/.config/vcsh/repo.d -maxdepth 1 -type d -printf "%f\n" ); do
-	  echo $(basename $i .git); done )
-	COMPREPLY=( $( compgen -W '${wordlist[@]}' -- "$currentword" ) )
-	return 0
+  local wordlist=$( for i in $( find $HOME/.config/vcsh/repo.d -maxdepth 1 -type d -printf "%f\n" ); do
+    echo $(basename $i .git); done )
+  COMPREPLY=( $( compgen -W '${wordlist[@]}' -- "$currentword" ) )
+  return 0
 }
 
 # ----------------

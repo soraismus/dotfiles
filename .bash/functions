@@ -7,7 +7,7 @@ back () {
 
 # List all category tags that match an argument.
 bmgrep () {
-	local SEARCHTERM="*$1*"
+  local SEARCHTERM="*$1*"
   # Find directories in "$TAGPATH' with names
   # that partially match "$SEARCHTERM".
   find "$TAGPATH" -type d -name "$SEARCHTERM" \
@@ -39,20 +39,20 @@ git_prompt () {
   # If there is an error (e.g., no git repository exists),           |
   # 'branch' is set to an empty string.                              |
   # ------------------------------------------------------------------
-	local BRANCH="$( git rev-parse --abbrev-ref HEAD 2> /dev/null )"
+  local BRANCH="$( git rev-parse --abbrev-ref HEAD 2> /dev/null )"
 
   local RESULT=""
   local STATUS=""
 
-	if [ -n "$BRANCH" ]; then
+  if [ -n "$BRANCH" ]; then
     # `git status -z` returns a 1-line response.
-		if [ -n "$(git status -z 2> /dev/null)" ]; then
-			STATUS="✘"
-		else
-			STATUS="✔"
-		fi
+    if [ -n "$(git status -z 2> /dev/null)" ]; then
+      STATUS="✘"
+    else
+      STATUS="✔"
+    fi
     RESULT="($BRANCH $STATUS) "
-	fi
+  fi
 
   echo "$RESULT"
 }
@@ -76,16 +76,16 @@ revert () {
 
   # The first 5 fields are equivalent to the first 4 ancestor directories,
   # and so 'PATH_PREFIX' is set to "/home/theo/.marks/#{directory}".
-	local PATH_PREFIX="$( pwd | cut -d'/' -f1-5 )"
+  local PATH_PREFIX="$( pwd | cut -d'/' -f1-5 )"
 
   # Set 'LEAF' to the remaining fragment of the current working directory path.
-	local LEAF="$( pwd | cut -d'/' -f6- )"
+  local LEAF="$( pwd | cut -d'/' -f6- )"
 
   # Because "$PATH_PREFIX" is a softlink, the 11th field of
   # `ls -l "$PATH_PREFIX"` is the actual direct path.
-	local RESTORED_PATH="$( ls -l "$PATH_PREFIX" | awk '{print $11}' )"
+  local RESTORED_PATH="$( ls -l "$PATH_PREFIX" | awk '{print $11}' )"
 
-	local FULL_PATH="${RESTORED_PATH}/${LEAF}"
+  local FULL_PATH="${RESTORED_PATH}/${LEAF}"
   cd "$FULL_PATH"
 }
 
@@ -93,25 +93,25 @@ revert () {
 to () {
   # Dereference '$MARKPATH/$1' and set to 'TGT'.
   local TGT="$( ls -l "$MARKPATH/$1" 2>/dev/null | awk '{print $11}' )"
-	
-	[ -z "$TGT" ] && fatal 3 "No such mark: $1"
+  
+  [ -z "$TGT" ] && fatal 3 "No such mark: $1"
 
-	# Check whether the string '$TGT' has a dollar sign.
-	if echo $TGT | grep \\$ >/dev/null; then
+  # Check whether the string '$TGT' has a dollar sign.
+  if echo $TGT | grep \\$ >/dev/null; then
 
-	  # Strip the dollar sign off.
-	  local TGT2="$( echo $TGT | sed 's/\$//' )"
+    # Strip the dollar sign off.
+    local TGT2="$( echo $TGT | sed 's/\$//' )"
 
-		# Double indirection by way of the Bash construct `${!...}`.
-		# Double indirection is necessary since the variable 'TGT2'
-		# is used rather than '$TGT2' (i.e., the reference of 'TGT2').
-		cd -L ${!TGT2} 2>/dev/null || fatal 4 "Error occurred."
+    # Double indirection by way of the Bash construct `${!...}`.
+    # Double indirection is necessary since the variable 'TGT2'
+    # is used rather than '$TGT2' (i.e., the reference of 'TGT2').
+    cd -L ${!TGT2} 2>/dev/null || fatal 4 "Error occurred."
 
   else
-		# The following preserves '$MARKPATH' at the prompt,
-		# and this favors succinctness.
-		cd -L "$MARKPATH/$1"
-	fi
+    # The following preserves '$MARKPATH' at the prompt,
+    # and this favors succinctness.
+    cd -L "$MARKPATH/$1"
+  fi
 }
 
 # Toggle between a prompt that displays the full current-working-directory
@@ -121,10 +121,10 @@ togglePrompt () {
   # an uppercase 'W' indicates an abbreviated path.
   # Toggle the value of the prompt variable 'PS1'.
   if [[ "$PS1" =~ w ]]; then
-	  PS1="$(echo "$PS1" | sed 's/w/W/g')"
-	else
-	  PS1="$(echo "$PS1" | sed 's/W/w/g')"
-	fi
+    PS1="$(echo "$PS1" | sed 's/w/W/g')"
+  else
+    PS1="$(echo "$PS1" | sed 's/W/w/g')"
+  fi
 }
 
 listRecentFiles () {
@@ -143,7 +143,7 @@ listRecentFiles () {
 # the following function in the '.exports' file.
 prompt_command () {
   # Record the current working directory.
-	pwd > "$HOME/.lastdir"
+  pwd > "$HOME/.lastdir"
   [ "$LASTDIR" != "$PWD" ] && listRecentFiles
-	export LASTDIR="$PWD"
+  export LASTDIR="$PWD"
 }
