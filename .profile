@@ -1,28 +1,5 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
+# ~/.profile: Executed by the command interpreter for login shells.
+# This file is not read by bash, if ~/.bash_profile or ~/.bash_login exists.
 
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
-
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# 30 October 2013
-# script based on mosbylinux.wordpress/2012/08/15/...
-# /home/theo/scripts/auto-texas &
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[ -d "$HOME/bin"     ] && PATH="$HOME/bin:$PATH"
+[ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
