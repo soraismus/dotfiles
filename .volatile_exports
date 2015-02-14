@@ -1,2 +1,2 @@
-export SOFTLINKS=/home/theo/SoftLinks
-export RAILSCHESS=/home/theo/Documents/practice/rails/rails-chess
+export SOFTLINKS="$HOME/SoftLinks"
+export RAILSCHESS="$HOME/Documents/practice/rails/rails-chess"
