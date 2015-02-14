@@ -1,31 +1,52 @@
-_completemarks() {
-  local curw=${COMP_WORDS[COMP_CWORD]}
-	# type 'l' refers to symbolic links.
-	local wordlist=$(find $MARKPATH -type l -printf "%f\n")
-	COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+# NB: The syntax `( $str )` transforms a space-delimited string into an array.
+
+_completeMarks () {
+  local currentword=${COMP_WORDS[COMP_CWORD]}
+  # Set 'wordlist' to the set of symbolic links in '$MARKPATH'.
+	local wordlist=$( find $MARKPATH -type l -printf "%f " )
+	COMPREPLY=( $( compgen -W "$wordlist" -- "$currentword" ) )
 	return 0
 }
 
-complete -F _completemarks to mark
+_completeNamespaceScript () {
+  local command=${COMP_WORDS[0]}
+  local currentword=${COMP_WORDS[COMP_CWORD]}
 
-_vcshcomplete() {
-  local curw=${COMP_WORDS[COMP_CWORD]}
-	# local wordlist=$(find $HOME/.config/vcsh/repo.d -maxdepth 1 -type d -printf "%f\n")
+  # `$command help` returns a newline-delimited string, so
+  # transform the newlines into spaces.
+	local wordlist=$( "$command" help | tr '\\n' ' ' )
+
+	COMPREPLY=( $( compgen -W "$wordlist" -- "$currentword" ) )
+	return 0
+}
+
+_completeTags () {
+	local currentword=${COMP_WORDS[COMP_CWORD]}
+	# Set 'wordlist' to the set of directories in '$TAGPATH'.
+	local wordlist=$( find $TAGPATH -type d -printf "%f " )
+	COMPREPLY=( $( compgen -W "$wordlist" -- "$currentword" ) )
+	return 0
+}
+
+_vcshcomplete () {
+  local currentword=${COMP_WORDS[COMP_CWORD]}
 	local wordlist=$( for i in $( find $HOME/.config/vcsh/repo.d -maxdepth 1 -type d -printf "%f\n" ); do
 	  echo $(basename $i .git); done )
-	COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+	COMPREPLY=( $( compgen -W '${wordlist[@]}' -- "$currentword" ) )
 	return 0
 }
 
+# ----------------
+# File extensions
+# ----------------
+complete -f -X '!*.java' javac
+complete -f -X '!*.tar' tar
+complete -f -X '!*.@(?([xX]|[sS])[hH][tT][mM]?([lL]))' links
+
+# ----------
+# Functions
+# ----------
+complete -F _completeMarks to
+complete -F _completeNamespaceScript mark note tag
+complete -F _completeTags bm bmgrep bookmark
 complete -F _vcshcomplete vcsh
-
-_completeTags() {
-	local curw=${COMP_WORDS[COMP_CWORD]}
-	# type 'd' refers to directories.
-	local wordlist=$(find $TAGPATH -type d -printf "%f\n")
-	COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
-	return 0
-}
-
-complete -F _completeTags tag bookmark
-complete -F _completeTags tag bm
