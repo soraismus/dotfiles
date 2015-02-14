@@ -10,7 +10,6 @@
 	co = checkout
 	d = diff
 	dump = cat-file -p
-	gr = '[ ! -z `git rev-parse --show-cdup` ] && `git rev-parse --show-cdup || pwd`' # goto git-repo root
 	h = help
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 	st = status
